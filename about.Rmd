@@ -1,0 +1,28 @@
+---
+title: "About"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+## Let me introduce myself.
+
+I’m a first year student at Columbia Mailman, in MS, biostatistics program. I graduated from University of California San Diego, majored in Biology with specialization in Bioinformatics. I used to work as a neuroscience research intern at the Scripps research Institute. The objective of our project was to understand how the change of mice hippocampus synaptic networks correlates to memory storage. I contributed to the data gathering, processing, and statistical analysis of complex neuron cell networks, The data anaysis tools I used was mainly Excel, and MATLAB. I also make 3D rendered images of the neuron cells as figures on the manuscript. Our paper was published on *cell reports* this April.
+
+I also interned as a bioinformatics engineer at Simcere phamathutical. Our project aim to develop a cancer liquid biopsy product. I conducted a lot of literature searches targeting the newest algorithms to extract patients’ cell-free DNA phenotype that correlates to different cancers. I used Microsoft PowerPoint and Word to present the summarized search findings to my supervisor and colleagues in the weekly meeting, and we discussed whether the ideas and results presented in those articles were significant, whether we should follow their path or not. After deciding the path, I will follow the ideas in the selected article, and use the company’s own sequencing data of patients to develop new computational pipelines. That resulted in a gradient boost classier dintingushing samples from healthy patients and cancer patients. The company used my work as building blocks for their cancer liquid biopsy products. 
+
+With these backgrounds about neuroscience research, literature search, data processing and analysing, I’m very excited about my upcoming part-time work as a technician assistant at Vagelos College of Physicians and Surgeons.
+  
+## My Minecraft creations
+And yes, I play Minecraft! I'm proud of my creations!
+![](./images/creation1.png)  
+  
+![](./images/creation2.png)  
+  
+![](./images/creation3.png)  
+
+  
+  
+  
+### Back to the [index](index.html) page

@@ -1,0 +1,18 @@
+name: "wz2590's website!"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "About"
+      href: about.html
+    - text: "Dashboard"
+      href: dashboard.html
+    - icon: fa-envelope fa-lg
+      href: mailto:<wz2590@cumc.columbia.edu>
+    - icon: fa-github fa-lg
+      href: https://github.com/wz2590
+    - icon: fa-linkedin fa-lg
+      href: https://www.linkedin.com/in/weiheng-zhang-edward/
+output:
+  html_document:
+    theme: cosmo
