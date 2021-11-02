@@ -1,0 +1,88 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+```{r}
+data("instacart")
+```
+
+```{r}
+Top10_product_counts = 
+  instacart %>% 
+  count(product_name) %>% 
+  arrange(desc(n)) %>% 
+  rename(counts = n) %>% 
+  head(10) %>% 
+  mutate(product_name = fct_reorder(product_name, counts, .desc = T))
+
+names_top10 = Top10_product_counts$product_name
+```
+
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+### Chart A: The Average Ordered Hour of Top 10 Ordered Products for Each Day
+
+```{r}
+instacart %>% 
+  filter(product_name %in% names_top10) %>% 
+  group_by(product_name, order_dow) %>% 
+  summarise(mean_hour = mean(order_hour_of_day)) %>% 
+  mutate(mean_hour = round(mean_hour, 2),
+         order_dow = factor(order_dow, 
+                            levels = c("0", "1", "2", "3", "4", "5", "6"),
+                            labels = c("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"))) %>% 
+  plot_ly(
+    x = ~order_dow, y = ~mean_hour, color = ~product_name, type = "scatter", mode = "lines+markers") %>% 
+  layout(xaxis = list(title = "Day of The Week"),
+         yaxis = list(title = "Average Time of Order (hours)"))
+```
+
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+### Chart B: Counts of The Top 10 Products Ordered
+
+```{r}
+Top10_product_counts %>% 
+  plot_ly(
+    x = ~product_name, y = ~counts, type = "bar", mode = "markers",
+    color = ~product_name) %>% 
+  layout(xaxis = list(title = "Product Names"),
+         yaxis = list(title = "Ordered Counts"))
+```
+
+
+
+### Chart C: Distribution of Counts of 10 Most Popular Products Ordered in Four Departments
+
+```{r}
+instacart %>% 
+  filter(department %in% c("frozen", "beverages", "pantry", "snacks")) %>% 
+  group_by(department) %>% 
+  count(product_name) %>% 
+  rename(ordered_times = n) %>% 
+  mutate(rank = min_rank(desc(ordered_times))) %>% 
+  filter(rank < 10) %>% 
+  arrange(department, rank) %>% 
+  plot_ly(
+    y = ~ordered_times, color = ~department, type = "violin") %>% 
+  layout(xaxis = list(title = "Department"),
+         yaxis = list(title = "Ordered Counts"))
+```
+
+
+
